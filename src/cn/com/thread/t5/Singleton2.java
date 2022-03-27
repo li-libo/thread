@@ -1,5 +1,8 @@
 package cn.com.thread.t5;
 
+/**
+ * 单例示例-懒汉模式
+ */
 public class Singleton2 {
 	
 	private Singleton2() {}
@@ -15,7 +18,7 @@ public class Singleton2 {
 		if(instance == null) {
 			/*
 			 * synchronized没有进行指令重排序原因:
-			 * 		而synchronized的作用是加锁，可以保证串行执行，即可以让并发环境 转为单线程环境。
+			 * 		而synchronized的作用是加锁，可以保证串行执行，即可以让并发环境转为单线程环境。
 			 * 因此加了synchronized就已经是单线程环境了。既然是单线程，那么无论是否进行了重排序，
 			 * 最终的结果都不会有影响，即都可以保证线程安全。所以说，在使用synchronized时根本不用关心
 			 * “重排序”这个问题，无论它支持或不支持，都已经不重要了。

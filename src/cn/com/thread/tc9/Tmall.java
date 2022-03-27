@@ -1,61 +1,58 @@
 package cn.com.thread.tc9;
 
-public class Tmall<E> implements Shop<E>{
-	
-	private final Object lock = new Object();
-	
-	private final int capacity;
-	
-	private Object[] array;
-	
-	private int size;
-	
-	private int putIndex;
-	
-	private int takeIndex;
-	
-	public Tmall(int capacity) {
-		this.capacity = capacity;
-		array = new Object[capacity];
-	}
+/**
+ * @author lilibo
+ * @create 2022-01-07 5:39 PM
+ */
+public class Tmall implements Shop<Commodity>{
 
-	@Override
-	public void put(E e) throws Exception {
-		synchronized(lock) {
-			while(size >= capacity) {
-				lock.wait();
-			}
-			array[putIndex] = e;
-			putIndex++;
-			size++;
-			if(putIndex == capacity) {
-				putIndex = 0;
-			}
-			lock.notifyAll();
-		}
-	}
+    private final int capacity;
 
-	@Override
-	public E take() throws Exception {
-		synchronized (lock) {
-			while(size <= 0) {
-				lock.wait();
-			}
-			@SuppressWarnings("unchecked")
-			E oldValue = (E) array[takeIndex];
-			takeIndex++;
-			size--;
-			if(takeIndex == capacity) {
-				takeIndex = 0;
-			}
-			lock.notifyAll();
-			return oldValue;
-		}
-	}
+    private int size;
 
-	@Override
-	public int size() throws Exception {
-		return size;
-	}
+    private final Commodity[] array;
 
+    private int putIndex;
+
+    private int takeIndex;
+
+    public Tmall(int capacity) {
+        this.capacity = capacity;
+        array = new Commodity[capacity];
+    }
+
+    @Override
+    public synchronized void put(Commodity commodity) throws InterruptedException {
+        while (size >= capacity) {
+            this.wait();
+        }
+        array[putIndex] = commodity;
+        putIndex++;
+        size++;
+        if(putIndex == capacity) {
+            putIndex = 0;
+        }
+        this.notifyAll();
+    }
+
+    @Override
+    public synchronized Commodity take() throws InterruptedException {
+        while (size <= 0) {
+            this.wait();
+        }
+        Commodity returnValue = array[takeIndex];
+        array[takeIndex] = null;
+        takeIndex++;
+        size--;
+        if(takeIndex == capacity) {
+            takeIndex = 0;
+        }
+        this.notifyAll();
+        return returnValue;
+    }
+
+    @Override
+    public int size() {
+        return size;
+    }
 }

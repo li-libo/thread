@@ -29,7 +29,7 @@ public class AtomicReferenceTest {
 				}
 			}, "test-" + i).start();
 		}
-		while(Thread.activeCount() > 1) {
+		while(Thread.activeCount() > 2) {
 			
 		}
 		System.out.println("new Connection count = " + newConnectionCount.get());

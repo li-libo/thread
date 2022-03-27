@@ -1,34 +1,33 @@
 package cn.com.thread.t3;
 
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Stream;
 
 /**
- * volatile只能保证可见性,不能保证原子性
+ * volatile只能保证可见性.不能保证原子性
  * @author lilibo
- *
+ * @create 2021-12-31 8:06 PM
  */
 public class VolatileTest {
-	
-	private volatile static int value = 0;
 
-	public static void main(String[] args) {
-		for(int i = 0; i < 20; i++) {
-			new Thread(()->{
-				for(int j = 0; j < 1000; j++) {
-					try {
-						TimeUnit.MILLISECONDS.sleep(1);
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					value++;
-				}
-			}).start();
-		}
-		while(Thread.activeCount() > 1) {
-			Thread.yield();
-		}
-		System.out.println("value = " + value);
-	}
+    private static volatile int value;
 
+    public static final int numOfThread = 5;
+
+    public static final int loop = 10000;
+
+    public static void main(String[] args) throws InterruptedException {
+        Stream.iterate(0, count -> count + 1).limit(numOfThread).forEach(count -> {
+            new Thread(()-> {
+                Stream.iterate(0, count1 -> count1 + 1).limit(loop).forEach(count1-> {
+                    value++;
+                });
+            }, "thread-" + count).start();
+        });
+        while (Thread.activeCount() > 1) {
+            Thread.currentThread().getThreadGroup().list();
+            Thread.yield();
+        }
+        System.out.println("value = " + value);
+    }
 }

@@ -10,7 +10,7 @@ import java.util.List;
 
 public class SumDemo {
 
-	public static final String SUMFILE_PATH_NAME = "/Users/lilibo/eclipse-workspace/thread/src/cn/com/thread/tb4/nums.txt";
+	public static final String SUMFILE_PATH_NAME = "/Users/lilibo/intellij-idea workplace/thread/src/cn/com/thread/tb4/nums.txt";
 
 	private int[] array;
 
@@ -28,7 +28,7 @@ public class SumDemo {
 			}).start();
 		}
 		int allSum = 0;
-		while (Thread.activeCount() > 1) {
+		while (Thread.activeCount() > 2) {
 
 		}
 		for (int o : array) {

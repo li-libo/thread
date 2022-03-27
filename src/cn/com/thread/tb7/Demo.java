@@ -3,6 +3,10 @@ package cn.com.thread.tb7;
 import java.util.concurrent.Exchanger;
 
 public class Demo {
+
+	public static final String res1 = "123456";
+
+	public static final String res2 = "12345";
 	
 	public void a (Exchanger<String> exch) {
 		
@@ -15,12 +19,9 @@ public class Demo {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		
-		String res = "123456";
-		
 		try {
 			System.out.println("a 等待对比结果...");
-			String valueOfAnotherThread = exch.exchange(res);
+			String valueOfAnotherThread = exch.exchange(res1);
 			System.out.println("另一个线程的值为: " + valueOfAnotherThread);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
@@ -37,12 +38,10 @@ public class Demo {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		String res = "12345";
-		
 		try {
-			String valueOfAnotherThread = exch.exchange(res);
+			String valueOfAnotherThread = exch.exchange(res2);
 			System.out.println("开始进行比对...");
-			System.out.println("比对结果为：" + valueOfAnotherThread.equals("123456"));
+			System.out.println("比对结果为：" + valueOfAnotherThread.equals(res1));
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}

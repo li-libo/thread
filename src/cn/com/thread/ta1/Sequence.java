@@ -10,7 +10,7 @@ public class Sequence {
 	
 	private final SimpleLock lock = new SimpleLock();
 	
-	private static Set<String> idSet = Collections.synchronizedSet(new HashSet<String>());
+	private static Set<String> idSet = Collections.synchronizedSet(new HashSet<>());
 	
 	public int getNextId() {
 		try {
@@ -29,7 +29,7 @@ public class Sequence {
 			new Thread(()->{
 				while(true) {
 					String nextId = sequence.getNextId() + "";
-					System.out.println("nextId = " + nextId);
+					// System.out.println("nextId = " + nextId);
 					if(!idSet.add(nextId)) {
 						System.out.println("出现重复数据, the current Thread name = " + Thread.currentThread().getName() + ", nextId = " + nextId);
 					}

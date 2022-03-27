@@ -1,44 +1,66 @@
 package cn.com.thread.tb9;
 
+import java.util.UUID;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
-public class CakeFuture<E> {
+/**
+ * @author lilibo
+ * @create 2022-01-07 10:37 AM
+ */
+public class CakeFuture {
 
-	private final ReentrantLock lock = new ReentrantLock();
+    private final String orderId;
 
-	private final Condition addCondition = lock.newCondition();
+    private final ReentrantLock myLock = new ReentrantLock();
 
-	private final Condition takeCondtion = lock.newCondition();
+    private final Condition setCondition = myLock.newCondition();
 
-	private E cake;
+    private final Condition getCondition = myLock.newCondition();
 
-	public void setCake(E e) throws InterruptedException {
-		try {
-			lock.lock();
-			while (cake != null) {
-				addCondition.await();
-			}
-			cake = e;
-			takeCondtion.signalAll();
-		} finally {
-			lock.unlock();
-		}
-	}
-	
-	public E get() throws InterruptedException {
-		try {
-			lock.lock();
-			while(cake == null) {
-				takeCondtion.await();
-			}
-			E e = cake;
-			cake = null;
-			addCondition.signalAll();
-			return e;
-		}finally {
-			lock.unlock();
-		}
-	}
+    private Cake target;
 
+    public CakeFuture() {
+        orderId = UUID.randomUUID().toString();
+    }
+
+    public void set(Cake cake) throws InterruptedException {
+        try{
+            myLock.lock();
+            if(target != null) {
+                setCondition.await();
+            }
+            target = cake;
+            getCondition.signalAll();
+        }finally {
+            myLock.unlock();
+        }
+    }
+
+    public Cake get() throws InterruptedException {
+        try{
+            myLock.lock();
+            if(target == null) {
+                getCondition.await();
+            }
+            Cake returnValue = target;
+            target = null;
+            setCondition.signalAll();
+            return returnValue;
+        }finally {
+            myLock.unlock();
+        }
+    }
+
+    public String getOrderId() {
+        return orderId;
+    }
+
+    @Override
+    public String toString() {
+        return "CakeFuture{" +
+                "orderId='" + orderId + '\'' +
+                ", target=" + target +
+                '}';
+    }
 }

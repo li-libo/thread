@@ -6,23 +6,17 @@ import java.util.List;
 /**
  * lambda表达式实现多线程
  * @author lilibo
- *
+ * @create 2021-12-31 7:21 PM
  */
 public class Demo7 {
-	
-	public static void main(String[] args) {
-		List<Integer> values = Arrays.asList(10,20,30,40);
-		int res = new Demo7().add(values);
-		System.out.println("计算的结果为：" + res);		
-	}
-		
-	public int add (List<Integer> values) {
-//		values.parallelStream().forEach(System.out :: println);
-		return values.parallelStream().mapToInt( i -> {
-				System.out.println("the current Thread Name is " + Thread.currentThread().getName());
-				return i * 2;
-			}
-		).sum();
-	}
 
+    public static void main(String[] args) {
+        List<Integer> list = Arrays.asList(1, 2, 3, 4, 5);
+        int sum = list.parallelStream().mapToInt(value -> {
+            System.out.println("the currentThread name is " + Thread.currentThread().getName());
+            value = value * 2;
+            return value;
+        }).sum();
+        System.out.println("sum = " + sum);
+    }
 }

@@ -1,53 +1,66 @@
 package cn.com.thread.tc9;
 
-import java.util.concurrent.atomic.AtomicInteger;
+import org.junit.Test;
 
+import java.util.concurrent.TimeUnit;
+import java.util.stream.Stream;
+
+/**
+ * @author lilibo
+ * @create 2022-01-07 7:12 PM
+ */
 public class ShopDemo {
-	
-	public static final int numOfPutThread = 3;
-	
-	public static final int numOfTakeThread = 5;
 
-	private static final AtomicInteger atomicInteger = new AtomicInteger();
-	
-	public static void main(String[] args) {
-		Shop<Commodity> shop = new Tmall<>(10);
-		for(int i = 0; i < numOfPutThread; i++) {
-			final int j = i;
-			new Thread(()->{
-				while(true) {
-					try {
-						Commodity commodity = new Commodity(atomicInteger.incrementAndGet());
-						shop.put(commodity);
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
-				}
-			}, "putThread-" + j).start();
-		}
-		
-		for(int i = 0; i < numOfTakeThread; i++) {
-			final int j = i;
-			new Thread(()->{
-				while(true) {
-					try {
-						shop.take();
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
-				}
-			}, "takeThread-" + j).start();
-		}
-		
-		new Thread(()->{
-			while(true) {
-				try {
-					System.out.println("shop size = " + shop.size());
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		}, "sizeThread").start();
-	}
+    private final int capacity = 10;
+
+    @Test
+    public void test1() {
+        Shop shop = new PingDuoDuo(capacity);
+        int numOfPutThread = 3;
+        ThreadGroup putThreadGroup = new ThreadGroup("putThreadGroup");
+        Stream.iterate(0, count -> count + 1).limit(numOfPutThread).forEach(count -> {
+            new Thread(putThreadGroup, ()->{
+                while (true) {
+                    try {
+                        shop.put(new Commodity());
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }, "putThread-" + count).start();
+        });
+
+        int numOfTakeThread = 5;
+        ThreadGroup takeThreadGroup = new ThreadGroup("takeThreadGroup");
+        Stream.iterate(0, count -> count + 1).limit(numOfTakeThread).forEach(count -> {
+            new Thread(takeThreadGroup, ()->{
+                while (true) {
+                    try {
+                        shop.take();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }, "takeThread-" + count).start();
+        });
+
+        ThreadGroup sizeThreadGroup = new ThreadGroup("sizeThread");
+        Thread sizeThread = new Thread(sizeThreadGroup, () -> {
+            while (true) {
+                try {
+                    TimeUnit.MILLISECONDS.sleep(100);
+                    System.out.println("size = " + shop.size());
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, "sizeThread");
+        sizeThread.setDaemon(true);
+        sizeThread.start();
+
+        while(putThreadGroup.activeCount() > 0 || takeThreadGroup.activeCount() > 0) {
+            Thread.yield();
+        }
+    }
 
 }

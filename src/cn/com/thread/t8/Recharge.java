@@ -23,7 +23,7 @@ public class Recharge {
 			while(true) {
 				Integer oldMoney = moneyRef.get();
 				if(oldMoney >= 20) {
-					System.out.println("无需充值!!!");
+					//System.out.println("无需充值!!!");
 				}
 				if(oldMoney < 20 && moneyRef.compareAndSet(oldMoney, oldMoney + 20)) {
 					System.out.println("充值成功!!!");
@@ -37,7 +37,7 @@ public class Recharge {
 				Integer oldMoney = moneyRef.get();
 				int price = random.nextInt(10);
 				if(oldMoney >= price && moneyRef.compareAndSet(oldMoney, oldMoney - price)) {
-					System.out.println("消费成功!!! price = " + price);
+					//System.out.println("消费成功!!! price = " + price);
 				}
 			}
 		}, "consume-thread").start();

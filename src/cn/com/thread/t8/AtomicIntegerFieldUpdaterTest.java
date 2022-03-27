@@ -1,28 +1,32 @@
 package cn.com.thread.t8;
 
-import java.util.concurrent.atomic.AtomicIntegerFieldUpdater;
+import org.junit.Test;
 
+import java.util.concurrent.atomic.AtomicIntegerFieldUpdater;
+import java.util.stream.Stream;
+
+/**
+ * 原子更新字段测试
+ * @author lilibo
+ * @create 2022-01-02 10:51 AM
+ */
 public class AtomicIntegerFieldUpdaterTest {
 
-	public static final int numOfThread = 10;
+    public static final int numOfTestThread = 5;
 
-	private AtomicIntegerFieldUpdater<Pig> ageField = AtomicIntegerFieldUpdater.newUpdater(Pig.class, "age");
+    public static final int numOfLoop = 5;
 
-	public static void main(String[] args) {
-		AtomicIntegerFieldUpdaterTest test = new AtomicIntegerFieldUpdaterTest();
-		Pig pig = new Pig();
-		for (int i = 0; i < numOfThread; i++) {
-			new Thread(() -> {
-				for (int j = 0; j < 10000; j++) {
-					test.ageField.incrementAndGet(pig);
-				}
-			}).start();
-		}
-
-		while (Thread.activeCount() > 1) {
-
-		}
-		System.out.println("pig age = " + test.ageField.get(pig));
-	}
+    @Test
+    public void test1() {
+        // 属性需要为volatile, 且属性可以访问
+        AtomicIntegerFieldUpdater<Person> ageAtomicIntegerFieldUpdater = AtomicIntegerFieldUpdater.newUpdater(Person.class, "age");
+        Person person = new Person();
+        Stream.iterate(0, count -> count + 1).limit(numOfTestThread).forEach(count -> {
+            Stream.iterate(0, count1 -> count1 + 1).limit(numOfLoop).forEach(count1 -> {
+                ageAtomicIntegerFieldUpdater.incrementAndGet(person);
+            });
+        });
+        System.out.println(person);
+    }
 
 }

@@ -1,21 +1,111 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9a994db7-9689-4afa-990f-6d9a16224a83" name="Changes" comment="" />
+    <list default="true" id="c16eefcd-320c-4146-949a-716183efc528" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/cn/com/thread/aba/Demo1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cn/com/thread/completablefuture/CompletableFutureTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cn/com/thread/completablefuture/CompletableFutureTest1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cn/com/thread/fairandunfair/FairAndUnFairTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cn/com/thread/interrept/Demo1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cn/com/thread/locksupport/LockSupportTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cn/com/thread/longadder/LongAccumulatorTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cn/com/thread/longadder/LongAdderTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cn/com/thread/reentranlock/Demo1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cn/com/thread/semaphore/Demo1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cn/com/thread/t1/MyRunnableImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cn/com/thread/t2/ConsoleColors.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cn/com/thread/t5/Singleton1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cn/com/thread/t6/Demo1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cn/com/thread/t7/Demo4.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cn/com/thread/t8/Person.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cn/com/thread/ta1/FairLockTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cn/com/thread/ta1/ReentrantLockDemo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cn/com/thread/ta3/ReentrantReadWriteLockDemo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cn/com/thread/ta4/MyFairLock.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cn/com/thread/ta4/MyLock.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cn/com/thread/ta4/MyLockTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cn/com/thread/ta6/ABCTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cn/com/thread/ta6/Demo1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cn/com/thread/ta6/ShopDemo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cn/com/thread/tb1/JoinDemo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cn/com/thread/tb1/SimpleBlockingArrayQueue.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cn/com/thread/tb2/Demo1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cn/com/thread/tb5/Demo1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cn/com/thread/tb5/nums.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cn/com/thread/td4/ThreadPoolDemo1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cn/com/thread/td5/TryWithResourceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cn/com/thread/threadgroup/ThreadGroupTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cn/com/thread/threadpool/Demo1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cn/com/thread/unsafe/UnsafeTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cn/com/thread/visualvm/Demo1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cn/com/thread/visualvm/Demo2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/com/thread/t2/Demo1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/com/thread/t2/Demo1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/com/thread/t2/Demo2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/com/thread/t2/Demo2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/com/thread/t2/Demo3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/com/thread/t2/Demo3.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/com/thread/t2/Demo4.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/com/thread/t2/Demo4.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/com/thread/t2/Demo5.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/com/thread/t2/Demo5.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/com/thread/t2/Demo6.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/com/thread/t2/Demo6.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/com/thread/t2/Demo7.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/com/thread/t2/Demo7.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/com/thread/t3/Sequence.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/com/thread/t3/Sequence.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/com/thread/t3/VolatileTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/com/thread/t3/VolatileTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/com/thread/t4/Demo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/com/thread/t4/Demo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/com/thread/t5/MultiThreadTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/com/thread/t5/MultiThreadTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/com/thread/t5/Singleton2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/com/thread/t5/Singleton2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/com/thread/t5/Singleton3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/com/thread/t5/Singleton3.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/com/thread/t6/Demo2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/com/thread/t6/Demo2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/com/thread/t6/Demo3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/com/thread/t6/Demo3.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/com/thread/t7/Demo2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/com/thread/t7/Demo2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/com/thread/t8/AtomicIntegerArrayTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/com/thread/t8/AtomicIntegerArrayTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/com/thread/t8/AtomicIntegerFieldUpdaterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/com/thread/t8/AtomicIntegerFieldUpdaterTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/com/thread/t8/AtomicReferenceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/com/thread/t8/AtomicReferenceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/com/thread/t8/Recharge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/com/thread/t8/Recharge.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/com/thread/t9/Sequence.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/com/thread/t9/Sequence.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/com/thread/ta1/MyLock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/com/thread/ta1/MyLock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/com/thread/ta1/Sequence.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/com/thread/ta1/Sequence.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/com/thread/ta1/SimpleLock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/com/thread/ta1/SimpleLock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/com/thread/ta2/FairLock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/com/thread/ta2/FairLock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/com/thread/ta5/DegradeLock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/com/thread/ta5/DegradeLock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/com/thread/ta6/Demo2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/com/thread/ta6/Demo2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/com/thread/ta6/Demo3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/com/thread/ta6/Demo3.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/com/thread/tb1/JoinAndDaemonTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/com/thread/tb1/JoinAndDaemonTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/com/thread/tb3/ReferenceTestDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/com/thread/tb3/ReferenceTestDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/com/thread/tb3/ThreadLocalTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/com/thread/tb3/ThreadLocalTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/com/thread/tb4/SumDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/com/thread/tb4/SumDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/com/thread/tb5/Demo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/com/thread/tb5/Demo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/com/thread/tb5/Demo2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/com/thread/tb5/Demo2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/com/thread/tb6/SemaphoreDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/com/thread/tb6/SemaphoreDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/com/thread/tb7/Demo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/com/thread/tb7/Demo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/com/thread/tb9/Cake.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/com/thread/tb9/Cake.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/com/thread/tb9/CakeFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/com/thread/tb9/CakeFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/com/thread/tb9/CakeFuture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/com/thread/tb9/CakeFuture.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/com/thread/tb9/MyFutureDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/com/thread/tb9/MyFutureDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/com/thread/tc2/Demo2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/com/thread/tc2/Demo2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/com/thread/tc6/FinalDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/com/thread/tc6/FinalDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/com/thread/tc8/Demo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/com/thread/tc8/Demo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/com/thread/tc9/Commodity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/com/thread/tc9/Commodity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/com/thread/tc9/JingDong.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/com/thread/tc9/JingDong.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/com/thread/tc9/PingDuoDuo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/com/thread/tc9/PingDuoDuo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/com/thread/tc9/Shop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/com/thread/tc9/Shop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/com/thread/tc9/ShopDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/com/thread/tc9/ShopDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/com/thread/tc9/Tmall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/com/thread/tc9/Tmall.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/com/thread/td1/StampedLockDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/com/thread/td1/StampedLockDemo.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="GitSEFilterConfiguration">
-    <file-type-list>
-      <filtered-out-file-type name="LOCAL_BRANCH" />
-      <filtered-out-file-type name="REMOTE_BRANCH" />
-      <filtered-out-file-type name="TAG" />
-      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
-    </file-type-list>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
-  <component name="ProjectId" id="21ofymYArjgBfj7SzBjc2bXhpb3" />
+  <component name="ProjectId" id="26y01ekk3J8LL8AHpvVtvn0WPgg" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -24,21 +114,81 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/cn" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.VCS" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/cn" />
+      <recent name="$PROJECT_DIR$/src" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="TestNG">
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="9a994db7-9689-4afa-990f-6d9a16224a83" name="Changes" comment="" />
-      <created>1638612619486</created>
+      <changelist id="c16eefcd-320c-4146-949a-716183efc528" name="Changes" comment="" />
+      <created>1648380306061</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1638612619486</updated>
-      <workItem from="1638612621864" duration="547000" />
+      <updated>1648380306061</updated>
+      <workItem from="1648380308385" duration="545000" />
     </task>
+    <task id="LOCAL-00001" summary="增加mysql依赖">
+      <created>1648380631401</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1648380631401</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="增加mysql依赖" />
+    <option name="LAST_COMMIT_MESSAGE" value="增加mysql依赖" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

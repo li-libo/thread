@@ -1,5 +1,7 @@
 package cn.com.thread.t7;
 
+import java.util.concurrent.TimeUnit;
+
 /**
 volatile示例: 
 	volatile称之为轻量级锁，被volatile修饰的变量，在线程之间是可见的。
@@ -17,37 +19,28 @@ Lock指令:
  */
 public class Demo2 {
 
-	public volatile boolean run = false; // 加上volatile保证可见性
+	// private static boolean blockFlag = true;
+
+	// 加入volatile使多个线程能及时看到最新值, 保证可见性
+	private static volatile boolean blockFlag = true;
 
 	public static void main(String[] args) {
-
-		Demo2 d = new Demo2();
-
-		new Thread(new Runnable() {
-			@Override
-			public void run() {
-				for (int i = 1; i <= 10; i++) {
-					System.err.println("执行了第 " + i + " 次");
-					try {
-						Thread.sleep(1000);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-				}
-				d.run = true;
+		new Thread(()-> {
+			try {
+				System.out.println("the currentThread name = " + Thread.currentThread().getName() + " is running!");
+				TimeUnit.SECONDS.sleep(1);
+				System.out.println("the currentThread name = " + Thread.currentThread().getName() + " set blockFlag = false!");
+				blockFlag = false;
+			} catch (InterruptedException e) {
+				e.printStackTrace();
 			}
-		}).start();
+		}, "t1").start();
 
-		new Thread(new Runnable() {
-			@Override
-			public void run() {
-				while (!d.run) {
-					// 不执行
-				}
-				System.err.println("线程2执行了...");
+		new Thread(() -> {
+			while(blockFlag) {
+				//System.out.println("blockFlag = " + blockFlag);
 			}
-		}).start();
-
+			System.out.println("the currentThread name = " + Thread.currentThread().getName() + "恢复执行了!");
+		}, "t2").start();
 	}
-
 }

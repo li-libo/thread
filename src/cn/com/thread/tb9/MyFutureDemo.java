@@ -1,35 +1,55 @@
 package cn.com.thread.tb9;
 
+import org.junit.Test;
+
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
+import java.util.Random;
 import java.util.Set;
-import java.util.concurrent.TimeUnit;
+import java.util.stream.Stream;
 
 /**
- * Future原理示例, Future类似于一个"订单"
+ * Future原理示例,Future类似于1个订单
  * @author lilibo
- *
+ * @create 2022-01-07 10:23 AM
  */
 public class MyFutureDemo {
 
-	public static void main(String[] args) throws InterruptedException {
-		CakeFactory cakeFactory = new CakeFactory();
-		Set<CakeFuture<Cake>> cakeFutureSet = Collections.synchronizedSet(new HashSet<>());
-		for(int i = 0; i< 5; i++) {
-			CakeFuture<Cake> cakeFuture = cakeFactory.orderCake("巧克力黑森林-" + i);
-			cakeFutureSet.add(cakeFuture);
-		}		
-		System.out.println("干些别的...");
-		TimeUnit.SECONDS.sleep(1);
-		for(CakeFuture<Cake> future: cakeFutureSet) {
-			new Thread(()->{
-				try {
-					System.out.println("取蛋糕..." + future.get());
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-			}).start();;			
-		}
-	}
+    private final CakeFactory cakeFactory = new CakeFactory();
 
+    private final Random random = new Random();
+
+    @Test
+    public void test1() {
+        int numOfTestThread = Runtime.getRuntime().availableProcessors();
+        List<CakeFuture> cakeFutureList = Collections.synchronizedList(new ArrayList<>());
+        Stream.iterate(0, count -> count + 1).limit(numOfTestThread).forEach(count -> {
+            try {
+                CakeFuture cakeFuture = cakeFactory.orderCake("蛋糕-" + count, 50 + random.nextInt(50));
+                cakeFutureList.add(cakeFuture);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        });
+
+        Set<Cake> cakeSet = Collections.synchronizedSet(new HashSet<>());
+        Stream.iterate(0, count -> count + 1).limit(numOfTestThread).forEach(count -> {
+            new Thread(()-> {
+                try {
+                    Cake cake = cakeFutureList.get(count).get();
+                    System.out.println("取出蛋糕: " + cake);
+                    cakeSet.add(cake);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }, "getCake-" + count).start();
+        });
+
+        while (Thread.activeCount() > 2) {
+            Thread.yield();
+        }
+        System.out.println(cakeSet);
+    }
 }

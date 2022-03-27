@@ -1,79 +1,35 @@
 package cn.com.thread.tc9;
 
-import java.util.concurrent.locks.Condition;
-import java.util.concurrent.locks.ReentrantLock;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
 
-public class PingDuoDuo<E> implements Shop<E>{
-	
-	private final int capacity;
-	
-	private Object[] array;
-	
-	private int size;
-	
-	private int putIndex;
-	
-	private int takeIndex;
-	
-	private final ReentrantLock lock = new ReentrantLock();
-	
-	private final Condition fullCondition = lock.newCondition();
-	
-	private final Condition emptyCondition = lock.newCondition();
-	
-	public PingDuoDuo(int capacity) {
-		this.capacity = capacity;
-		array = new Object[capacity];
-	}
+/**
+ * @author lilibo
+ * @create 2022-01-07 7:37 PM
+ */
+public class PingDuoDuo implements Shop<Commodity>{
 
-	@Override
-	public void put(E e) throws Exception {
-		try {
-			lock.lock();
-			while(size >= capacity) {
-				fullCondition.await();
-			}
-			array[putIndex] = e;
-			size++;
-			putIndex++;
-			if(putIndex == capacity) {
-				putIndex = 0;
-			}
-			emptyCondition.signalAll();
-		}finally {
-			lock.unlock();
-		}
-	}
+    private final BlockingQueue<Commodity> blockingQueue;
 
-	@Override
-	public E take() throws Exception {
-		try {
-			lock.lock();
-			while(size <= 0) {
-				emptyCondition.await();
-			}
-			@SuppressWarnings("unchecked")
-			E oldValue = (E) array[takeIndex];
-			size--;
-			takeIndex++;
-			if(takeIndex == capacity) {
-				takeIndex = 0;
-			}
-			fullCondition.signalAll();
-			return oldValue;
-		}finally {
-			lock.unlock();
-		}
-	}
+    public PingDuoDuo(int capacity) {
+        this.capacity = capacity;
+        this.blockingQueue = new LinkedBlockingQueue<>(capacity);
+    }
 
-	@Override
-	public int size() throws Exception {
-		return size;
-	}
+    private final int capacity;
 
-	@Override
-	public String toString() {
-		return "PingDuoDuo [capacity=" + capacity + ", size=" + size + "]";
-	}
+    @Override
+    public void put(Commodity commodity) throws InterruptedException {
+        blockingQueue.put(commodity);
+    }
 
+    @Override
+    public Commodity take() throws InterruptedException {
+        return blockingQueue.take();
+    }
+
+    @Override
+    public int size() {
+        return blockingQueue.size();
+    }
 }
