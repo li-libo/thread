@@ -1,0 +1,8 @@
+/.gradle/
+/bin/
+/h2.*.db
+/.bpmn/
+/build/
+/application.pid
+/log/
+.DS_Store
